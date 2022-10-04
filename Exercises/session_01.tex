@@ -13,20 +13,20 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\R}{\mathbb{R}}
-\renewcommand{\C}{\mathbb{C}}
+\newcommand{\C}{\mathbb{C}}
 \renewcommand{\epsilon}{\varepsilon}
 \renewcommand{\phi}{\varphi}
 
 
 \begin{document}
 
-# Exercise Session 1
+\section*{Exercise Session 1}
 
-## Problem 1
+\subsection*{Problem 1}
 
 Let $X \subseteq \mathbb{R}^n$ be a nonempty convex set and $f : \mathbb{R}^n \to \mathbb{R}$ a convex function. Show that every local minimum of $f$ with respect to $X$ is a global minimum of $f$ with respect to $X$.
 
-### Solution
+\subsubsection*{Solution}
 
 Let $y^*$ be a global minimum and $x^*$ be a local minimum. If $f(x^*) = f(y^*)$ we are be done, so suppose that $f(y^*) < f(x^*)$.
 
@@ -40,7 +40,7 @@ f \big( \lambda x^* + (1-\lambda) y^* \big) &\le \lambda f(x^*) + (1-\lambda) f(
 
 Since $X$ is convex there exists a $\lambda \in [0,1)$ such that $\lambda x^* + (1-\lambda) y^*$ is in a neighbourhood in which $x^*$ is the local minimum.
 
-But then $f(x^*) \le f \big( \lambda x^* + (1-\lambda) y^* \big) < f(x^*)$, which is a contradiction. So it must be that $f(x^*) = f(y^*)$ and thus $x^*$ is also a global minimum.
+But then $f(x^*) \le f \big( \lambda x^* + (1-\lambda) y^* \big) < f(x^*)$, which is a contradiction. So $f(x^*) = f(y^*)$ and thus $x^*$ is also a global minimum.
 
 
 
