@@ -2,7 +2,7 @@
 
 ## Problem 1
 
-Let $X \subset \R^n$ be a nonempty convex set.
+Let $X \subset \mathbb{R}^n$ be a nonempty convex set.
 
 ### Solution
 
