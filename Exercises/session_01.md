@@ -6,4 +6,4 @@ Let $X \subset \mathbb{R}^n$ be a nonempty convex set.
 
 ### Solution
 
-Let $y^*$ be a global minimum and $x^*$ be a local minimum such that $f(y^*) < f(x^*)$.
+Let $y^\*$ be a global minimum and $x^\*$ be a local minimum such that $f(y^\*) < f(x^\*)$.
