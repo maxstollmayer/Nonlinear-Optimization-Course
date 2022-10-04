@@ -1,0 +1,39 @@
+\part{First and second order optimality conditions}
+
+\section{Introductory notions}
+
+Let \(X \subseteq \R^n\) be nonempty and \(f : \R^n \to \R\). Consider
+
+\begin{equation}\label{1.1}
+    \min_{x \in X} f(x)
+\end{equation}
+
+An element \(x^* \in X\) is called a \textbf{local minimizer} of \eqref{1.1} if there exists a neighbourhood \(\U_\eps(x^*) \defeq \{ x \in \R^n \ : \ \norm{x - x^*} < \eps \}\) such that
+
+\begin{equation}\label{1.2}
+    f(x^*) \le f(x) \quad \forall x \in \U_\eps(x^*) \cap X.
+\end{equation}
+
+Here \(\norm{\cdot}\) denotes the Euclidean norm on \(\R^n\).
+
+In order to characterize the local minima of \eqref{1.1} we introduce the \textbf{Bouligand tangent cone} to \(X\) at a point \(x_0 \in X\)
+
+\[T_X(x_0) \defeq \left\{ d \in \R^n \ \middle| \ \exists (x^k)_{k \ge 1} \subseteq X ,\, \exists (t_k)_{k \ge 1} \searrow 0 \ \mathrm{s. t.} \ \frac{x^k - x_0}{t_k} \stackrel{k \to \infty}{\longrightarrow} d \right\}.\]
+
+Some properties:
+
+\begin{itemize}
+    \item \(0 \in T_X(x_0)\)
+    \item \(d \in T_X(x_0) \implies \lambda d \in T_X(x_0) \quad \forall \lambda \ge 0\)
+    \item \(X\) convex \(\implies T_X(x_0) = \cl\Big(\bigcap_{\lambda > 0} \lambda (X - x_0)\Big) = \cl\big(\cone(X - x_0)\big)\) convex
+    \item \(x \in \inter(X) \implies T_X(x_0) = \R^n\)
+    \item \(T_X(x_0)\) is always closed
+\end{itemize}
+
+\begin{proposition}
+    Let \(x^*\) be a local minimum of \eqref{1.1} and \(f\) be continuously differentiable in a neighbourhood of \(x^*\). There it holds that
+
+    \begin{equation}\label{1.3}
+        \nabla f(x^*)^\top d \ge 0 \quad \forall d \in T_X(x^*).
+    \end{equation}
+\end{proposition}
