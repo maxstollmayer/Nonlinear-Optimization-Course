@@ -1,0 +1,36 @@
+\subsection{Exercises}
+
+\begin{problem}
+
+Let \(X \subseteq \R^n\) be a nonempty convex set and \(f : \R^n \to \R\) a convex function. Show that every local minimum of \(f\) with respect to \(X\) is a global minimum of \(f\) with respect to \(X\).
+
+\end{problem}
+
+\begin{solution}
+
+Let \(y^*\) be a global minimum and \(x^*\) be a local minimum. If \(f(x^*) = f(y^*)\) we are done, so suppose that \(f(y^*) < f(x^*)\).
+
+Since \(f\) is convex we have for all \(\lambda \in [0, 1)\)
+
+\begin{align*}
+    f \big( \lambda x^* + (1-\lambda) y^* \big) &\le \lambda f(x^*) + (1-\lambda) f(y^*) \\
+    &< \lambda f(x^*) + (1-\lambda) f(x^*) \\
+    &= f(x^*).
+\end{align*}
+
+Since \(X\) is convex there exists a \(\lambda \in [0,1)\) such that \(\lambda x^* + (1-\lambda) y^*\) is inside a neighbourhood in which \(x^*\) is the local minimum.
+
+But then \(f(x^*) \le f \big( \lambda x^* + (1-\lambda) y^* \big) < f(x^*)\), which is a contradiction. So \(f(x^*) = f(y^*)\) and thus \(x^*\) is also a global minimum.
+
+\end{solution}
+
+\begin{problem}
+
+nother one
+
+\end{problem}
+
+\begin{solution}
+    solve
+\end{solution}
+    
