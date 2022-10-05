@@ -58,7 +58,7 @@ Let \(X \subseteq \R^n\) be a nonempty set and \(x_0 \in X\). Show that the foll
 \end{solution}
 
 \begin{problem}
-    Let \(X \subseteq \R^n\) be a nonempty set and \(\dist_X : \R^n \to \R\), \(\dist_X(y) = \inf\{\norm{y-x} \ : \ x \in X\}\), the \textbf{distance function} associated to \(X\). For a given function \(f : \R^n \to \R\), let
+    Let \(X \subseteq \R^n\) be a nonempty set and \(\dist_X : \R^n \to \R\), \(\dist_X(y) = \inf\set{\norm{y-x}}{x \in X}\), the \textbf{distance function} associated to \(X\). For a given function \(f : \R^n \to \R\), let
     \[f'(x_0;d) \defeq \lim_{t \searrow 0} \frac{f(x_0 + t d)}{t}\]
     denote its \textbf{directional derivative} at \(x_0 \in \R^n\) in direction \(d \in \R^n\). Prove that if \(X\) is convex and \(x_0 \in X\), then
     \[T_X(x_0) = \{ d \in \R^n \ | \ (\dist_X)'(x_0;d) = 0 \}.\]
@@ -77,7 +77,7 @@ Let \(X \subseteq \R^n\) be a nonempty set and \(x_0 \in X\). Show that the foll
     \end{align*}
     where \(f, g_i, h_j : \R^n \to \R\) for \(i = 1, \dots, m\) and \(j = 1, \dots, p\) are continuously differentiable functions.
     Let \(x_0\) be a feasible element of this problem and
-    \[X_{\lin} \defeq \left\{ x \in \R^n \ \middle| \ \begin{aligned} & g_i(x_0) + \nabla g_i(x_0)^\top (x - x_0) \le 0 \ i = 1, \dots, m \\ & h_j(x_0) + \nabla h_j(x_0)^\top (x - x_0) = 0 \ j = 1, \dots, p \end{aligned} \right\}.\]
+    \[X_{\lin} \defeq \set{x \in \R^n}{\begin{aligned} & g_i(x_0) + \nabla g_i(x_0)^\top (x - x_0) \le 0 \ i = 1, \dots, m \\ & h_j(x_0) + \nabla h_j(x_0)^\top (x - x_0) = 0 \ j = 1, \dots, p \end{aligned}}.\]
 
     Prove that \(T_{\lin}(x_0) = T_{X_{\lin}}(x_0)\).
 
@@ -92,7 +92,7 @@ Let \(X \subseteq \R^n\) be a nonempty set and \(x_0 \in X\). Show that the foll
     Let
     \[g : \R^2 \to \R^4 ,\ g(x,y) = \big(\pi-2x ,\ -y-1 ,\ 2x-3\pi ,\ y-\sin(x)\big)^\top\]
     and
-    \[X = \big\{ (x,y) \in \R^2 \ \big| \ g(x,y) \le 0 \big\}.\]
+    \[X = \set{ (x,y) \in \R^2}{g(x,y) \le 0}.\]
 
     \begin{enumerate}
         \item Represent the set \(X\) graphically.

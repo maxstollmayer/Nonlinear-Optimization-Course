@@ -8,7 +8,7 @@ Let \(X \subseteq \R^n\) be nonempty and \(f : \R^n \to \R\). Consider
     \min_{x \in X} f(x)
 \end{equation}
 
-An element \(x^* \in X\) is called a \textbf{local minimizer} of \eqref{1.1} if there exists a neighbourhood \(\U_\eps(x^*) \defeq \{ x \in \R^n \ : \ \norm{x - x^*} < \eps \}\) such that
+An element \(x^* \in X\) is called a \textbf{local minimizer} of \eqref{1.1} if there exists a neighbourhood \(\U_\eps(x^*) \defeq \set{x \in \R^n}{\norm{x - x^*} < \eps}\) such that
 
 \begin{equation}\label{1.2}
     f(x^*) \le f(x) \quad \forall x \in \U_\eps(x^*) \cap X.
@@ -18,7 +18,7 @@ Here \(\norm{\cdot}\) denotes the Euclidean norm on \(\R^n\).
 
 In order to characterize the local minima of \eqref{1.1} we introduce the \textbf{Bouligand tangent cone} to \(X\) at a point \(x_0 \in X\)
 
-\[T_X(x_0) \defeq \left\{ d \in \R^n \ \middle| \ \exists (x^k)_{k \ge 1} \subseteq X ,\, \exists (t_k)_{k \ge 1} \searrow 0 \ \mathrm{s. t.} \ \frac{x^k - x_0}{t_k} \stackrel{k \to \infty}{\longrightarrow} d \right\}.\]
+\[T_X(x_0) \defeq \set{d \in \R^n}{\exists (x^k)_{k \ge 1} \subseteq X ,\, \exists (t_k)_{k \ge 1} \searrow 0 \ \mathrm{s. t.} \ \frac{x^k - x_0}{t_k} \stackrel{k \to \infty}{\longrightarrow} d}.\]
 
 Some properties:
 
