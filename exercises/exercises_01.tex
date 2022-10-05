@@ -26,11 +26,95 @@ But then \(f(x^*) \le f \big( \lambda x^* + (1-\lambda) y^* \big) < f(x^*)\), wh
 
 \begin{problem}
 
-nother one
+Let \(X \subseteq \R^n\) be a nonempty set and \(x_0 \in X\). Show that the following statements are true:
+
+\begin{enumerate}
+    \item \(T_X(x_0)\) is a nonempty closed cone;
+    \item if \(X\) is a convex set, then \(T_X(x_0) = \cl\left(\bigcup_{\lambda \ge 0}(X - x_0)\right)\) is a convex set as well;
+    \item if \(X\) is a convex set, then \(\big(T_X(x_0)\big)^* = - N_X(x_0)\).
+\end{enumerate}
 
 \end{problem}
 
 \begin{solution}
-    solve
+    ~
+    \begin{enumerate}
+        \item \begin{itemize}
+            \item For \((x^k)_{k \ge 1} = (x_0)_{k \ge 1} \subseteq X\) and \((t_k)_{k \ge 1} = (1/k)_{k \ge 1} \searrow 0\) we get \(\frac{x^k - x_0}{t_k} = 0\). So \(0 \in T_X(x_0)\) and thus \(T_X(x_0)\) is nonempty.
+            \item closed ???
+            \item Let \(d \in T_X(x_0)\) with its defining sequences \((x^k)_{k \ge 1} \subseteq X\) and \((t_k)_{k \ge 1} \searrow 0\), and let \(\lambda > 0\). Then \((\frac{t_k}{\lambda})_{k \ge 1} \searrow 0\) and \(\frac{x^k - x_0}{t_k / \lambda} = \lambda \frac{x^k - x_0}{t_k} \to \lambda d\). So \(\lambda d \in T_X(x_0)\) and thus \(T_X(x_0)\) is a cone.
+        \end{itemize}
+
+        \item Let \(d, e \in T_X(x_0)\) with their respective defining sequences \((x^k)_{k \ge 1}\), \((y^k)_{k \ge 1} \subseteq X\) and \((t_k)_{k \ge 1}\), \((s_k)_{k \ge 1} \searrow 0\). Also let \(\lambda \in [0, 1]\). Then \(\frac{\lambda s_k}{\lambda s_k + (1-\lambda) t_k} < 1\), so \(z^k \defeq \frac{\lambda s_k}{\lambda s_k + (1-\lambda) t_k} x^k + \left(1-\frac{\lambda s_k}{\lambda s_k + (1-\lambda) t_k}\right) y^k \subseteq X\) since \(X\) is convex. Also we have \(u_k \defeq \frac{t_k s_k}{\lambda s_k + (1-\lambda) t_k} \searrow 0\) and thus \(\frac{z^k - x_0}{u_k} = \frac{\lambda s_k + (1-\lambda) t_k}{t_k s_k} \left( \frac{\lambda s_k}{\lambda s_k + (1-\lambda) t_k} x^k + \left(1-\frac{\lambda s_k}{\lambda s_k + (1-\lambda) t_k}\right) y^k - x_0 \right)\) \\
+        \(= \frac{1}{t_k s_k} \left( \lambda s_k x^k + (1-\lambda) t_k y^k - \left( \lambda s_k + (1-\lambda) t_k \right) x_0 \right)\) \\
+        \(= \frac{\lambda s_k (x^k - x_0) + (1-\lambda) t_k (y^k - x_0)}{t_k s_k} = \lambda \frac{x^k - x_0}{t_k} + (1-\lambda) \frac{y^k - x_0}{s_k} \to \lambda d + (1-\lambda) e\). This implies \(\lambda d + (1-\lambda) e \in T_X(x_0)\), which means that that \(T_X(x_0)\) is convex.
+
+        \item Since \(\big(T_X(x_0)\big)^* = \set{s \in \R^n}{s^\top d \ge 0 \ \forall d \in T_X(x_0)}\) and \(- N_X(x_0) = \set{s \in \R^n}{s^\top (x-x_0) \ \forall x \in X}\) we need to show that for a given \(s \in \R^n\) the following equivalence holds: \[s^\top d \ge 0 \ \forall d \in T_X(x_0) \iff s^\top (x - x_0) \ge 0 \ \forall x \in X \]
+        \begin{itemize}
+            \item To prove \((\Rightarrow)\) let \(x \in X\) and \((t_k) \searrow 0\) s.t. \(t_k \in (0, 1)\) for all \(k \ge 1\). Then \(x^k \defeq t_k x + (1-t_k) x_0 \in X\) for all \(k \ge 1\) since \(X\) is convex. So we have \[\frac{x^k - x_0}{t_k} = \frac{t_k x - t_k x_0}{t_k} = x - x_0,\] which implies that \(x - x_0 \in T_X(x_0)\) and thus \(s^\top (x - x_0) \ge 0\).
+            \item To prove \((\Leftarrow)\) let \(d \in T_X(x_0)\) with defining sequences \((x^k)_{k \ge 1} \subseteq X\) and \((t_k)_{k \ge 1} \searrow 0\). Then \(s^\top \frac{x - x_0}{t_k} = \frac{s^\top (x^k - x_0)}{t_k} \ge 0\) for all \(k \ge 1\) and so we also have \(s^\top d \ge 0\).
+        \end{itemize}
+    \end{enumerate}
 \end{solution}
+
+\begin{problem}
+    Let \(X \subseteq \R^n\) be a nonempty set and \(\dist_X : \R^n \to \R\), \(\dist_X(y) = \inf\{\norm{y-x} \ : \ x \in X\}\), the \textbf{distance function} associated to \(X\). For a given function \(f : \R^n \to \R\), let
+    \[f'(x_0;d) \defeq \lim_{t \searrow 0} \frac{f(x_0 + t d)}{t}\]
+    denote its \textbf{directional derivative} at \(x_0 \in \R^n\) in direction \(d \in \R^n\). Prove that if \(X\) is convex and \(x_0 \in X\), then
+    \[T_X(x_0) = \{ d \in \R^n \ | \ (\dist_X)'(x_0;d) = 0 \}.\]
+\end{problem}
+
+\begin{solution}
     
+\end{solution}
+
+\begin{problem}
+    Consider the general constrained optimization problem
+    \begin{align*}
+        \min_{x \in \R^n} \ & f(x) \\
+        \mathrm{s.t.} \ & g_i(x) \le 0 \quad \ i = 1, \dots, m \\
+        & h_j(x) = 0 \quad j = 1, \dots, p
+    \end{align*}
+    where \(f, g_i, h_j : \R^n \to \R\) for \(i = 1, \dots, m\) and \(j = 1, \dots, p\) are continuously differentiable functions.
+    Let \(x_0\) be a feasible element of this problem and
+    \[X_{\lin} \defeq \left\{ x \in \R^n \ \middle| \ \begin{aligned} & g_i(x_0) + \nabla g_i(x_0)^\top (x - x_0) \le 0 \ i = 1, \dots, m \\ & h_j(x_0) + \nabla h_j(x_0)^\top (x - x_0) = 0 \ j = 1, \dots, p \end{aligned} \right\}.\]
+
+    Prove that \(T_{\lin}(x_0) = T_{X_{\lin}}(x_0)\).
+
+    Hint: Show that \(T_{\lin}(x_0) = \bigcup_{\lambda \ge 0} \lambda (X_{\lin} - x_0)\) and use problem 1.1(ii).
+\end{problem}
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{problem}
+    Let
+    \[g : \R^2 \to \R^4 ,\ g(x,y) = \big(\pi-2x ,\ -y-1 ,\ 2x-3\pi ,\ y-\sin(x)\big)^\top\]
+    and
+    \[X = \big\{ (x,y) \in \R^2 \ \big| \ g(x,y) \le 0 \big\}.\]
+
+    \begin{enumerate}
+        \item Represent the set \(X\) graphically.
+        \item Find the tangent cones \(T_X(x_i)\) for \(i = 1, 2, 3\), where \(x_1 = (\frac{\pi}{2}, 1)^\top\), \(x_2 = (\pi, 0)^\top\) and \(x_3 = (\frac{3\pi}{2}, -1)^\top\), and represent these sets graphically.
+        \item Find the linearized tangent cones \(T_{\lin}(x_i)\) for \(i = 1,2,3,\).
+        \item Find \(i \in \{1,2,3\}\) for which \(T_X(x_i) = T_{\lin}(x_i)\).
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{problem}
+    Let \(A \in \R^{m \times n}\) and \(b \in \R^m\). Prove by using the strong duality theorem of linear optimization that the following statements are equivalent:
+
+    \begin{enumerate}
+        \item The system \(A x = b\) has a solution \(x \ge 0\).
+        \item It holds \(b^\top d \ge 0\) for every \(d \in \R^m\) with \(A^\top d \ge 0\).
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    
+\end{solution}

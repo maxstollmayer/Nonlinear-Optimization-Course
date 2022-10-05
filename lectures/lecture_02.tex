@@ -58,16 +58,16 @@ Motivation: The aim is to introduce a "replacement" for the Bouligand tangent co
     Let \(x_0 \in X\).
     \begin{enumerate}
         \item The constraint \(g_i(x) \le 0\) is said to be \textbf{active} at \(x_0\) if \(g_i(x_0) = 0\). We define \(\A(x_0) \defeq \{i = 1,\dots,m \ | \ g_i(x_0) = 0\}\) as the set of \textbf{active indices} at \(x_0\) and \(\I \defeq \{1,\dots,m\} \setminus \A(x_0)\) as the set of \textbf{inactive indices} at \(x_0\).
-        \item The set \[\Tlin(x_0) \defeq \left\{ d \in \R^n \ \middle| \ \begin{aligned} &\nabla g_i(x_0)^\top d \le 0 &&\forall i \in \A(x_0) \\ &\nabla h_j(x_0)^\top d = 0 &&\forall j = 1,\dots,p \end{aligned} \right\}\] is the so called \textbf{linearized tangent cone} to \(X\) at \(x_0\).
+        \item The set \[T_{\lin}(x_0) \defeq \left\{ d \in \R^n \ \middle| \ \begin{aligned} &\nabla g_i(x_0)^\top d \le 0 &&\forall i \in \A(x_0) \\ &\nabla h_j(x_0)^\top d = 0 &&\forall j = 1,\dots,p \end{aligned} \right\}\] is the so called \textbf{linearized tangent cone} to \(X\) at \(x_0\).
     \end{enumerate}
 \end{definition}
 
 \begin{remark}\label{rem1.6}
-    It holds \(\Tlin(x_0) = T_{X_\mathrm{lin}}(x_0)\) where \[X_\mathrm{lin} \defeq \left\{ x \in \R^n \ \middle| \ \begin{aligned} & g_i(x_0) + \nabla g_i(x_0)^\top (x - x_0) \le 0 && \forall i = 1,\dots,m \\ & h_j(x_0) + \nabla h_j(x_0)^\top (x - x_0) = 0 && \forall j = 1,\dots,p \end{aligned} \right\}.\]
+    It holds \(T_{\lin}(x_0) = T_{X_\mathrm{lin}}(x_0)\) where \[X_\mathrm{lin} \defeq \left\{ x \in \R^n \ \middle| \ \begin{aligned} & g_i(x_0) + \nabla g_i(x_0)^\top (x - x_0) \le 0 && \forall i = 1,\dots,m \\ & h_j(x_0) + \nabla h_j(x_0)^\top (x - x_0) = 0 && \forall j = 1,\dots,p \end{aligned} \right\}.\]
 \end{remark}
 
 \begin{lemma}\label{lem1.7}
-    Let \(x_0 \in X\). It holds \(T_X(x_0) \subseteq \Tlin(x_0)\).
+    Let \(x_0 \in X\). It holds \(T_X(x_0) \subseteq T_{\lin}(x_0)\).
 \end{lemma}
 \begin{proof}
     Let \(d \in T_x(x_0)\). Then there are \((x^k)_{k \ge 1}\) and \((t_k)_{k \ge 1} \searrow 0\) s.t. \(\frac{x^k - x_0}{t_k} \to d\).
@@ -78,7 +78,7 @@ Motivation: The aim is to introduce a "replacement" for the Bouligand tangent co
 \end{proof}
 
 \begin{example}\label{ex1.8}
-    The equality \(T_X(x_0) = \Tlin(x_0)\) is in general not fulfilled!
+    The equality \(T_X(x_0) = T_{\lin}(x_0)\) is in general not fulfilled!
 
     For instance consider the following problem
     \begin{align*}
@@ -87,7 +87,7 @@ Motivation: The aim is to introduce a "replacement" for the Bouligand tangent co
         & g_2(x_1, x_2) \defeq x_2 - x_1^3 \le 0.
     \end{align*}
 
-    Then \(x^* = (0,0)^\top\) is the global minimum: \(f(x^*) \le f(x)\) for all \(x \in X\). Also we have that \(\A(x_0) = \{1,2\}\), \(\nabla g_1(x_1, x_2) = (0, -1)^\top\) and \(\nabla g_2 (x_1, x_2) = (-3 x_1, 1)^\top\) which give \(\nabla g_1(x^*) = (0, -1)^\top\) and \(\nabla g_2(x^*) = (0,1)^\top\). Thus \[\Tlin(x^*) = \left\{d \in \R^2 \ \middle| \ -d_2 \le 0 ,\ d_2 \le 0\right\} = \left\{d \in \R^2 \ \middle| \ d_2 = 0\right\}\] but \[T_X(x^*) = \left\{d \in \R^2 \ \middle| \ d_2 = 0, d_1 \ge 0\right\}.\] So \(T_X(x^*) \varsubsetneq \Tlin(x^*)\).
+    Then \(x^* = (0,0)^\top\) is the global minimum: \(f(x^*) \le f(x)\) for all \(x \in X\). Also we have that \(\A(x_0) = \{1,2\}\), \(\nabla g_1(x_1, x_2) = (0, -1)^\top\) and \(\nabla g_2 (x_1, x_2) = (-3 x_1, 1)^\top\) which give \(\nabla g_1(x^*) = (0, -1)^\top\) and \(\nabla g_2(x^*) = (0,1)^\top\). Thus \[T_{\lin}(x^*) = \left\{d \in \R^2 \ \middle| \ -d_2 \le 0 ,\ d_2 \le 0\right\} = \left\{d \in \R^2 \ \middle| \ d_2 = 0\right\}\] but \[T_X(x^*) = \left\{d \in \R^2 \ \middle| \ d_2 = 0, d_1 \ge 0\right\}.\] So \(T_X(x^*) \varsubsetneq T_{\lin}(x^*)\).
 
-    In addition \(\nabla f(x^*) = (1,0)^\top\) and it holds \(\nabla f(x^*)^\top d = d_1 \le 0\) for all \(d \in T_X(x^*)\) but \(\nabla f(x^*)^\top d = d_1 \ngeq 0\) for all \(d \in \Tlin(x^*)\). So we cannot replace \(T_X(x^*)\) by \(\Tlin(x^*)\) in \eqref{1.3}!
+    In addition \(\nabla f(x^*) = (1,0)^\top\) and it holds \(\nabla f(x^*)^\top d = d_1 \le 0\) for all \(d \in T_X(x^*)\) but \(\nabla f(x^*)^\top d = d_1 \ngeq 0\) for all \(d \in T_{\lin}(x^*)\). So we cannot replace \(T_X(x^*)\) by \(T_{\lin}(x^*)\) in \eqref{1.3}!
 \end{example}
