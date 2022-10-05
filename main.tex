@@ -9,17 +9,20 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{dsfont}
+\usepackage{enumitem}
 \usepackage{hyperref}
 \hypersetup{
-    colorlinks=false,
+    colorlinks=true,
     pdfencoding=unicode,
     pdftitle={Nonlinear Optimization},
+    pdfauthor={Maximilian Stollmayer},
     pdfpagemode=FullScreen
 }
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{.5\baselineskip plus 2pt}
 \numberwithin{equation}{section}
+\setlist[enumerate,1]{label=(\roman*)}
 
 \theoremstyle{definition}
 \newtheorem{theorem}{Theorem}[section]
@@ -37,6 +40,9 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\U}{\mathcal{U}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\Tlin}{T_{\mathrm{lin}}}
 \renewcommand{\epsilon}{\varepsilon}
 \newcommand{\eps}{\epsilon}
 \renewcommand{\phi}{\varphi}

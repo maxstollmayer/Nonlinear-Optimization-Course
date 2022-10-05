@@ -1,5 +1,93 @@
 \begin{proof}
-    Let \(d \in T_X(x^*) \implies \exists (x^k)_{k \ge 1} \subseteq X, \exists (t_k)_{k \ge 1} \searrow 0\) s.t. \(\frac{x^k - x^*}{t_k} \to d \implies x^k - x^* = \frac{x^k - x^*}{t_k} t_k \to 0\).
+    Let \(d \in T_X(x^*)\),. Then there are \((x^k)_{k \ge 1} \subseteq X\) and \((t_k)_{k \ge 1} \searrow 0\) s.t. \(\frac{x^k - x^*}{t_k} \to d\) and thus \(x^k - x^* = \frac{x^k - x^*}{t_k} t_k \to 0\).
 
-    Let \(\U_\eps(x^*)\) be the neighbourhood of \(x^*\) on which \(f\) is \(C^1\) and for which \(f(x^*) \le f(x)\) for all \(x \in \U_\eps(x^*)\). Then \(\exists k_0 \in \N\) s.t. \(x^k \in \U_\eps(x^*)\) for all \(k \ge k_0\)
+    Let \(\U_\eps(x^*)\) be the neighbourhood of \(x^*\) on which \(f\) is \(C^1\) and for which \(f(x^*) \le f(x)\) for all \(x \in \U_\eps(x^*)\). Then there is a \( k_0 \in \N\) s.t. \(x^k \in \U_\eps(x^*)\) for all \(k \ge k_0\) and from the mean value theorem (MVT) it follows that a \(\xi^k \in (x^*, x^k)\) exists s.t. \(f(x^k) - f(x^*) = \nabla f(\xi^k)^\top (x^k - x^*)\). Also \(\norm{\xi^k - x^*} \le \norm{x^* - x^k}\) implies \(\xi^k \to x^*\).
+
+    Then for all \(k \ge k_0\) we have \(\nabla f(\xi^k)^\top (x^k - x^*) = f(x^k) - f(x^*) \ge 0\) and also \(\nabla f(\xi^k)^\top \frac{x^k - x^*}{t_k} \ge 0\). Thus \(k \to \infty\) gives us \(\nabla f(x^*) d \ge 0\).
 \end{proof}
+
+\begin{definition}\label{def1.2}
+    For a given cone \(K \subseteq \R^n\) denote by \(K^* \defeq \{s \in \R^n \ | \ s^\top d \ge 0 \ \forall d \in K\}\) the \textbf{dual cone} of \(K\).
+
+    Note: \eqref{1.3} says that \(\nabla f(x^*) \in \big(T_X(x^*)\big)^*\).
+\end{definition}
+
+\begin{remark}\label{rem1.3}
+    \begin{enumerate}
+        \item If \(X\) is convex then \(T_X(x^*) = \cl\big(\cone(X - x^*)\big)\) and \(-\big(T_X(x^*)\big)^* = N_X(x^*) \defeq \{ s \in \R^n \ | \ s^\top (x - x^*) \le 0 \ \forall x \in X \}\) is the \textbf{normal cone}. \\
+        In this case \eqref{1.3} is equivalent to \(\nabla f(x^*) (x - x^*) \ge 0\) for all \(x \in X\).
+        \item Let \(x_0 \in \inter(X)\), then \(T_X(x_0) \in \R^n\). \\
+        To see "\(\supseteq\)" let \(d \in \R^n\). Then there is a \(k_0 \ge 1\) s.t. \(x^k \defeq x_0 + \frac{1}{k}d \in X\) for all \(k \ge k_0\). This implies \(\frac{x^k - x_0}{1/k} = d \to d\) and thus \(d \in T_X(x_0)\) for \((x^k)_{k \ge k_0} \subseteq X\) and \((\frac{1}{k})_{k \ge k_0} \searrow 0\). Since \(d\) was arbitrary we have \(T_X(x_0) = \R^n\).
+    \end{enumerate}
+\end{remark}
+
+\begin{theorem}\label{thm1.4}
+    Let \(x^*\) be a local minimum of \(f : \R^n \to \R\) and \(f\) be continuously differentiable in a neighbourhood \(\U_\eps(x^*)\) of \(x^*\). Then \(x^*\) is a \textbf{critical point} of \(f\), which means
+
+    \begin{equation}
+        \nabla f(x^*) = 0.
+    \end{equation}
+\end{theorem}
+\begin{proof}
+    From proposition \ref{prop1.1} it follows that \(\nabla f(x^*)^\top d \ge 0\) for all \(d \in T_X(x^*)\). By remark \ref{rem1.3}(ii) \(T_X(x^*) = \R^n\). So this is equivalent to \(\nabla f(x^*)^\top d = 0 \quad \forall
+    d \in \R^n \iff \nabla f(x^*) = 0\).
+\end{proof}
+
+In the following we will consider the general nonlinear optimization problem
+\begin{equation}\label{1.5}
+    \begin{split}
+        \min_{x \in \R^n} & f(x) \\
+        \mathrm{s.t.} \ & g_i(x) \le 0 \quad \forall i \in \{1, \dots, m\} \\
+        & h_j(x) = 0 \quad \forall j \in \{1, \dots, p\}
+    \end{split}
+\end{equation}
+where \(f, g_i, h_j : \R^n \to \R\) for \(i = 1, \dots, m\) and \(j = 1, \dots, p\) are continuously differentiable.
+
+The set
+\begin{equation}\label{1.6}
+    X = \{ x \in \R^n \ | \ g_i(x) \le 0 \ \forall i = 1,\dots,m \ h_j(x) = 0 \ \forall j = 1,\dots,p\}
+\end{equation}
+is called the \textbf{feasable set} of \eqref{1.5}.
+
+
+\subsection{The linearized tangent cone}
+
+Motivation: The aim is to introduce a "replacement" for the Bouligand tangent cone, which can be "easily" computed.
+
+\begin{definition}\label{def1.5}
+    Let \(x_0 \in X\).
+    \begin{enumerate}
+        \item The constraint \(g_i(x) \le 0\) is said to be \textbf{active} at \(x_0\) if \(g_i(x_0) = 0\). We define \(\A(x_0) \defeq \{i = 1,\dots,m \ | \ g_i(x_0) = 0\}\) as the set of \textbf{active indices} at \(x_0\) and \(\I \defeq \{1,\dots,m\} \setminus \A(x_0)\) as the set of \textbf{inactive indices} at \(x_0\).
+        \item The set \[\Tlin(x_0) \defeq \left\{ d \in \R^n \ \middle| \ \begin{aligned} &\nabla g_i(x_0)^\top d \le 0 &&\forall i \in \A(x_0) \\ &\nabla h_j(x_0)^\top d = 0 &&\forall j = 1,\dots,p \end{aligned} \right\}\] is the so called \textbf{linearized tangent cone} to \(X\) at \(x_0\).
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}\label{rem1.6}
+    It holds \(\Tlin(x_0) = T_{X_\mathrm{lin}}(x_0)\) where \[X_\mathrm{lin} \defeq \left\{ x \in \R^n \ \middle| \ \begin{aligned} & g_i(x_0) + \nabla g_i(x_0)^\top (x - x_0) \le 0 && \forall i = 1,\dots,m \\ & h_j(x_0) + \nabla h_j(x_0)^\top (x - x_0) = 0 && \forall j = 1,\dots,p \end{aligned} \right\}.\]
+\end{remark}
+
+\begin{lemma}\label{lem1.7}
+    Let \(x_0 \in X\). It holds \(T_X(x_0) \subseteq \Tlin(x_0)\).
+\end{lemma}
+\begin{proof}
+    Let \(d \in T_x(x_0)\). Then there are \((x^k)_{k \ge 1}\) and \((t_k)_{k \ge 1} \searrow 0\) s.t. \(\frac{x^k - x_0}{t_k} \to d\).
+
+    \(i \in \A(x_0) \stackrel{\mathrm{MVT}}{\implies} \exists \xi^k \in (x_0, x^k)\) s.t. \(g_i(x^k) = g_i(x_0) + \nabla g_i(\xi^k)^\top (x^k - x_0)\) so \(0 \ge \nabla g_i(\xi^k)^\top \frac{x^k - x_0}{t_k} \stackrel{k \to \infty}{\implies} 0 \ge \nabla g_i(x_0)^\top d\).
+
+    \(j \in \{1,dots,p\} \stackrel{\mathrm{MVT}}{\implies} \exists \eta^k \in (x_0, x^k)\) s.t. \(h_j(x^k) = h_j(x_0) + \nabla h_j(\eta^k)^\top (x^k - x_0)\) so \(0 = \nabla h_j(\eta^k)^\top \frac{x^k - x_0}{t_k} \stackrel{k \to \infty}{\implies} 0 \ge \nabla h_j(x_0)^\top d\).
+\end{proof}
+
+\begin{example}\label{ex1.8}
+    The equality \(T_X(x_0) = \Tlin(x_0)\) is in general not fulfilled!
+
+    For instance consider the following problem
+    \begin{align*}
+        \min_{(x_1, x_2) \in \R^2} & f(x_1, x_2) \defeq x_1 + x_2^2 \\
+        \mathrm{s.t.} & g_1(x_1, x_2) \defeq -x_2 \le 0 \\
+        & g_2(x_1, x_2) \defeq x_2 - x_1^3 \le 0.
+    \end{align*}
+
+    Then \(x^* = (0,0)^\top\) is the global minimum: \(f(x^*) \le f(x)\) for all \(x \in X\). Also we have that \(\A(x_0) = \{1,2\}\), \(\nabla g_1(x_1, x_2) = (0, -1)^\top\) and \(\nabla g_2 (x_1, x_2) = (-3 x_1, 1)^\top\) which give \(\nabla g_1(x^*) = (0, -1)^\top\) and \(\nabla g_2(x^*) = (0,1)^\top\). Thus \[\Tlin(x^*) = \left\{d \in \R^2 \ \middle| \ -d_2 \le 0 ,\ d_2 \le 0\right\} = \left\{d \in \R^2 \ \middle| \ d_2 = 0\right\}\] but \[T_X(x^*) = \left\{d \in \R^2 \ \middle| \ d_2 = 0, d_1 \ge 0\right\}.\] So \(T_X(x^*) \varsubsetneq \Tlin(x^*)\).
+
+    In addition \(\nabla f(x^*) = (1,0)^\top\) and it holds \(\nabla f(x^*)^\top d = d_1 \le 0\) for all \(d \in T_X(x^*)\) but \(\nabla f(x^*)^\top d = d_1 \ngeq 0\) for all \(d \in \Tlin(x^*)\). So we cannot replace \(T_X(x^*)\) by \(\Tlin(x^*)\) in \eqref{1.3}!
+\end{example}
