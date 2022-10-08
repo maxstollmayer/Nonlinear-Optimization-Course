@@ -40,8 +40,11 @@ Let \(X \subseteq \R^n\) be a nonempty set and \(x_0 \in X\). Show that the foll
     ~
     \begin{enumerate}
         \item \begin{itemize}
-            \item For \((x^k)_{k \ge 1} = (x_0)_{k \ge 1} \subseteq X\) and \((t_k)_{k \ge 1} = (1/k)_{k \ge 1} \searrow 0\) we get \(\frac{x^k - x_0}{t_k} = 0\). So \(0 \in T_X(x_0)\) and thus \(T_X(x_0)\) is nonempty.
-            \item closed ???
+            \item For \((x^k)_{k \ge 1} = (x_0)_{k \ge 1} \subseteq X\) and \((t_k)_{k \ge 1} = (\frac{1}{k})_{k \ge 1} \searrow 0\) we get \(\frac{x^k - x_0}{t_k} = 0\). So \(0 \in T_X(x_0)\) and thus \(T_X(x_0)\) is nonempty.
+            
+            \item Let \((d^i)_{i \ge 1} \subseteq T_X(x_0)\) s.t. \(d^i \to d\) with \((x^{i,k})_{k \ge 1} \subseteq X\) and \((t_{i,k})_{k \ge 1} \searrow 0\) the defining sequences for each \(d^i\). Then for some \(\eps > 0\) and every \(i \ge 1\) there exists a \(k(i) \ge 1\) s.t. \(\abs{t_{i,k}} \le \eps\) and \(\norm{\frac{x^{i,k} - x_0}{t_{i,k}} - d^i} \le \frac{\eps}{2}\) for all \(k \ge k(i)\). Also there is a \(i_0 \ge 1\) s.t. \(\norm{d^i - d} \le \frac{\eps}{2}\) for all \(i \ge i_0\).
+            So if we define \(x^i \defeq x^{i,k(i)}\) and \(t_i \defeq t_{i,k(i)}\) we have \(t_i \searrow 0\) and \[\norm{\frac{x^i - x_0}{t_i} - d} \le \norm{\frac{x^{i,k(i)} - x_0}{t_{i,k(i)}} - d^i} + \norm{d^i - d} \le \eps\] for all \(i \ge i_0\), meaning \(d \in T_X(x_0)\) and hence \(T_X(x_0)\) is closed.
+
             \item Let \(d \in T_X(x_0)\) with its defining sequences \((x^k)_{k \ge 1} \subseteq X\) and \((t_k)_{k \ge 1} \searrow 0\), and let \(\lambda > 0\). Then \((\frac{t_k}{\lambda})_{k \ge 1} \searrow 0\) and \(\frac{x^k - x_0}{t_k / \lambda} = \lambda \frac{x^k - x_0}{t_k} \to \lambda d\). So \(\lambda d \in T_X(x_0)\) and thus \(T_X(x_0)\) is a cone.
         \end{itemize}
 
