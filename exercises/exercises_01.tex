@@ -43,7 +43,7 @@ Let \(X \subseteq \R^n\) be a nonempty set and \(x_0 \in X\). Show that the foll
             \item For \((x^k)_{k \ge 1} = (x_0)_{k \ge 1} \subseteq X\) and \((t_k)_{k \ge 1} = (\frac{1}{k})_{k \ge 1} \searrow 0\) we get \(\frac{x^k - x_0}{t_k} = 0\). So \(0 \in T_X(x_0)\) and thus \(T_X(x_0)\) is nonempty.
             
             \item Let \((d^i)_{i \ge 1} \subseteq T_X(x_0)\) s.t. \(d^i \to d\) with \((x^{i,k})_{k \ge 1} \subseteq X\) and \((t_{i,k})_{k \ge 1} \searrow 0\) the defining sequences for each \(d^i\). Then for some \(\eps > 0\) and every \(i \ge 1\) there exists a \(k(i) \ge 1\) s.t. \(\abs{t_{i,k}} \le \eps\) and \(\norm{\frac{x^{i,k} - x_0}{t_{i,k}} - d^i} \le \frac{\eps}{2}\) for all \(k \ge k(i)\). Also there is a \(i_0 \ge 1\) s.t. \(\norm{d^i - d} \le \frac{\eps}{2}\) for all \(i \ge i_0\).
-            So if we define \(x^i \defeq x^{i,k(i)}\) and \(t_i \defeq t_{i,k(i)}\) we have \(t_i \searrow 0\) and \[\norm{\frac{x^i - x_0}{t_i} - d} \le \norm{\frac{x^{i,k(i)} - x_0}{t_{i,k(i)}} - d^i} + \norm{d^i - d} \le \eps\] for all \(i \ge i_0\), meaning \(d \in T_X(x_0)\) and hence \(T_X(x_0)\) is closed.
+            So if we define \(x^i \defeq x^{i,i}\) and \(t_i \defeq t_{i,i}\) we have \(t_i \searrow 0\) and \[\norm{\frac{x^i - x_0}{t_i} - d} \le \norm{\frac{x^{i,i} - x_0}{t_{i,i}} - d^i} + \norm{d^i - d} \le \eps\] for all \(i \ge \max\{i_0, k(i_0)\}\), meaning \(d \in T_X(x_0)\) and hence \(T_X(x_0)\) is closed.
 
             \item Let \(d \in T_X(x_0)\) with its defining sequences \((x^k)_{k \ge 1} \subseteq X\) and \((t_k)_{k \ge 1} \searrow 0\), and let \(\lambda > 0\). Then \((\frac{t_k}{\lambda})_{k \ge 1} \searrow 0\) and \(\frac{x^k - x_0}{t_k / \lambda} = \lambda \frac{x^k - x_0}{t_k} \to \lambda d\). So \(\lambda d \in T_X(x_0)\) and thus \(T_X(x_0)\) is a cone.
         \end{itemize}
@@ -52,10 +52,10 @@ Let \(X \subseteq \R^n\) be a nonempty set and \(x_0 \in X\). Show that the foll
         \(= \frac{1}{t_k s_k} \left( \lambda s_k x^k + (1-\lambda) t_k y^k - \left( \lambda s_k + (1-\lambda) t_k \right) x_0 \right)\) \\
         \(= \frac{\lambda s_k (x^k - x_0) + (1-\lambda) t_k (y^k - x_0)}{t_k s_k} = \lambda \frac{x^k - x_0}{t_k} + (1-\lambda) \frac{y^k - x_0}{s_k} \to \lambda d + (1-\lambda) e\). This implies \(\lambda d + (1-\lambda) e \in T_X(x_0)\), which means that that \(T_X(x_0)\) is convex.
 
-        \item Since \(\big(T_X(x_0)\big)^* = \set{s \in \R^n}{s^\top d \ge 0 \ \forall d \in T_X(x_0)}\) and \(- N_X(x_0) = \set{s \in \R^n}{s^\top (x-x_0) \ \forall x \in X}\) we need to show that for a given \(s \in \R^n\) the following equivalence holds: \[s^\top d \ge 0 \ \forall d \in T_X(x_0) \iff s^\top (x - x_0) \ge 0 \ \forall x \in X \]
+        \item Since \(\big(T_X(x_0)\big)^* = \set{s \in \R^n}{s^\top d \ge 0 \ \forall d \in T_X(x_0)}\) and \(- N_X(x_0) = \set{s \in \R^n}{s^\top (x-x_0) \ge 0 \ \forall x \in X}\) we need to show that for a given \(s \in \R^n\) the following equivalence holds: \[s^\top d \ge 0 \ \forall d \in T_X(x_0) \iff s^\top (x - x_0) \ge 0 \ \forall x \in X \]
         \begin{itemize}
             \item To prove \((\Rightarrow)\) let \(x \in X\) and \((t_k) \searrow 0\) s.t. \(t_k \in (0, 1)\) for all \(k \ge 1\). Then \(x^k \defeq t_k x + (1-t_k) x_0 \in X\) for all \(k \ge 1\) since \(X\) is convex. So we have \[\frac{x^k - x_0}{t_k} = \frac{t_k x - t_k x_0}{t_k} = x - x_0,\] which implies that \(x - x_0 \in T_X(x_0)\) and thus \(s^\top (x - x_0) \ge 0\).
-            \item To prove \((\Leftarrow)\) let \(d \in T_X(x_0)\) with defining sequences \((x^k)_{k \ge 1} \subseteq X\) and \((t_k)_{k \ge 1} \searrow 0\). Then \(s^\top \frac{x - x_0}{t_k} = \frac{s^\top (x^k - x_0)}{t_k} \ge 0\) for all \(k \ge 1\) and so we also have \(s^\top d \ge 0\).
+            \item To prove \((\Leftarrow)\) let \(d \in T_X(x_0)\) with defining sequences \((x^k)_{k \ge 1} \subseteq X\) and \((t_k)_{k \ge 1} \searrow 0\). Then \(s^\top \frac{x^k - x_0}{t_k} = \frac{s^\top (x^k - x_0)}{t_k} \ge 0\) for all \(k \ge 1\) and so we also have \(s^\top d \ge 0\).
         \end{itemize}
     \end{enumerate}
 \end{solution}
